@@ -339,12 +339,12 @@ height: 100%;
 
 	@keyframes bg-mobile {
 		0% { transform: translate3d(0,0,0); }
-		100% { transform: translate3d(-300px,0,0); }
+		100% { transform: translate3d(-2250px,0,0); }
 	}
 
 	@keyframes bg-mobile-portrait {
 		0% { transform: translate3d(0,0,0); }
-		100% { transform: translate3d(-412.5px,0,0); }
+		100% { transform: translate3d(-2250px,0,0); }
 	}
 
 	#bg {
