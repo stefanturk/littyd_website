@@ -337,6 +337,16 @@ height: 100%;
 		}
 	}
 
+	@keyframes bg-mobile {
+		0% { transform: translate3d(0,0,0); }
+		100% { transform: translate3d(-300px,0,0); }
+	}
+
+	@keyframes bg-mobile-portrait {
+		0% { transform: translate3d(0,0,0); }
+		100% { transform: translate3d(-412.5px,0,0); }
+	}
+
 	#bg {
 		/*background-size: 2250px auto;*/
 		background-size: contain;
@@ -1063,6 +1073,11 @@ height: 100%;
 
 		/* BG */
 
+			#bg {
+				animation: bg-mobile 6s linear infinite alternate;
+				-webkit-animation: bg-mobile 6s linear infinite alternate;
+			}
+
 			@-moz-keyframes bg {
 				0% {
 					-moz-transform: translate3d(0,0,0);
@@ -1162,6 +1177,11 @@ height: 100%;
 	@media screen and (max-width: 480px) {
 
 		/* BG */
+
+			#bg {
+				animation: bg-mobile-portrait 6s linear infinite alternate;
+				-webkit-animation: bg-mobile-portrait 6s linear infinite alternate;
+			}
 
 			@-moz-keyframes bg {
 				0% {
