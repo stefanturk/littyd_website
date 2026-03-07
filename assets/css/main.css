@@ -1074,8 +1074,8 @@ height: 100%;
 		/* BG */
 
 			#bg {
-				animation: bg-mobile 6s linear infinite alternate;
-				-webkit-animation: bg-mobile 6s linear infinite alternate;
+				animation: bg-mobile 24s linear infinite alternate;
+				-webkit-animation: bg-mobile 24s linear infinite alternate;
 			}
 
 			@-moz-keyframes bg {
@@ -1179,8 +1179,8 @@ height: 100%;
 		/* BG */
 
 			#bg {
-				animation: bg-mobile-portrait 6s linear infinite alternate;
-				-webkit-animation: bg-mobile-portrait 6s linear infinite alternate;
+				animation: bg-mobile-portrait 24s linear infinite alternate;
+				-webkit-animation: bg-mobile-portrait 24s linear infinite alternate;
 			}
 
 			@-moz-keyframes bg {
