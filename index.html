@@ -1,167 +1,115 @@
 <!DOCTYPE HTML>
 <!--
-	Copyright Stefan Turkowski
-	Started from Aerial by HTML5 UP
-	html5up.net | @ajlkn
-
-	603, 183
-
+  Copyright Stefan Turkowski
+  Started from Aerial by HTML5 UP
 -->
-
 <html>
-	<head>
-		<title>Litty D</title>
-		<meta property="og:title" content="Litty D" />
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content="https://littyd.com/" />
-		<meta property="og:image" content="https://littyd.com/thumbnail.jpg" />
+<head>
+  <title>Litty D</title>
+  <meta property="og:title" content="Litty D" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://littyd.com/" />
+  <meta property="og:image" content="https://littyd.com/thumbnail.jpg" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <script src="assets/js/logo-glow.js"></script>
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
 
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<style>
-		table, th, td {
-  		border: 5px solid black;
-		}
-		</style>
-	</head>
-	<body class="is-preload">
-		<div id="wrapper">
-			<div id="bg"></div>
-				<!-- <div id="overlay"></div>  This gets rid of the overlay-->
-			<div id="main">
+  <div id="bg"></div>
+  <canvas id="waves-bg"></canvas>
 
-				<!-- Header -->
-					<header id="header">
-						<div class="topnav">
-							<a class="active" href=./index.html>Tour</a>
-							<a href="./bio.html">Bio</a>
-							<a href="./photos.html">Photos</a>
-							<a href="./videos.html">Videos</a>
-						</div>
-					</header>
+  <div id="wrapper">
 
+    <header id="header">
+      <nav class="topnav">
+        <a class="active" href="./index.html">Tour</a>
+        <a href="./bio.html">Bio</a>
+        <a href="./photos.html">Photos</a>
+        <a href="./videos.html">Videos</a>
+      </nav>
+    </header>
 
+    <div id="main">
+      <div class="content">
 
-					<!-- Content -->
-					<div class="content">
+        <img src="logo.png" alt="Litty deBungus" class="site-logo" />
 
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
-						<br />
+        <marquee id="easter2" behavior="scroll" direction="left">Scroll down for tour dates...</marquee>
 
-						<img src="logo.png" alt="Litty deBungus" width="100%" height="200%">
-						<!--
-						<audio controls autoplay>
-							<source src="audio.mp3" type="audio/mpeg" width="100" height="100">
-						</audio>
-						-->
+        <nav>
+          <ul>
+            <li><a href="https://open.spotify.com/artist/1wzkm8uYH2UiFbdSSP0gIz?si=rSxMXra6RtSMRiDYsQe52A" class="icon brands fa-spotify"><span class="label">Spotify</span></a></li>
+            <li><a href="https://music.youtube.com/channel/UCyQRqttn6OlrTbFi0AKCs3g?si=rKUJft7sG61y6W-c" class="icon brands fa-youtube"><span class="label">YouTube Music</span></a></li>
+            <li><a href="https://www.instagram.com/littydebungus" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+            <li><a href="https://www.facebook.com/littydebungus" class="icon brands fa-facebook-square"><span class="label">Facebook</span></a></li>
+            <li><a href="https://www.youtube.com/channel/UCTn82omUSsgufkTLmqH3wOQ" class="icon brands fa-youtube-square"><span class="label">YouTube</span></a></li>
+            <li><a href="https://littydebungus.bandcamp.com/album/live-at-misco-9-14-24" class="icon brands fa-bandcamp"><span class="label">BandCamp</span></a></li>
+          </ul>
+        </nav>
 
-						<!-- <table id ="table1">
-						  <tr>
-						    <th style = "color: black;">Date</th>
-								<th style = "color: black;">Time</th>
-						    <th style = "color: black;">Venue</th>
-						    <th style = "color: black;">City</th>
-								<th style = "color: black;">Tickets</th>
-							</tr>
-						  <tr>
-						    <td>Saturday, Feburary 8th</td>
-								<td>9pm</td>xf
-								<td><a href="https://www.facebook.com/events/2490318757760150/">Neck of the Woods</a></td>
-						    <td>San Francisco</td>
-								<td><a href="https://www.neckofthewoodssf.com/e/lumbercat-litty-debungus-the-backburners-87201749781/">$10 / $15</a></td>
-						  </tr>
-						</table>
-						<p style = "font-size: 170%; color: White; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-weight: 900;"> For booking, please contact <a href="https://mail.google.com/mail/?view=cm&fs=1&to=booking@littyd.com">Booking@LittyD.com</a> </p> -->
+        <h2 class="section-title">Tour Dates</h2>
 
-						<marquee id='easter2' behavior="scroll" direction="left">Scroll down for tour dates...</marquee>
+        <ul class="tour-dates-list">
+          <li class="tour-date-item tour-color-purple">
+            <div class="tour-date-badge">
+              <span class="badge-month">Jun</span>
+              <span class="badge-day">20</span>
+            </div>
+            <div class="tour-date-info">
+              <a href="https://outerbass.space/" class="tour-event-name">Outer Bass Fest</a>
+              <span class="tour-venue">Ben Lomond, CA &middot; Saturday</span>
+            </div>
+            <a href="https://outerbass.space/" class="tour-tickets-link">Tickets →</a>
+          </li>
+        </ul>
 
-						<nav>
-							<ul>
-								<li><a href="https://open.spotify.com/artist/1wzkm8uYH2UiFbdSSP0gIz?si=rSxMXra6RtSMRiDYsQe52A" class="icon brands fa-spotify"><span class="label">Spotify</span></a></li>
-								<li><a href="https://www.instagram.com/littydebungus" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-								<li><a href="https://www.facebook.com/littydebungus" class="icon brands fa-facebook-square"><span class="label">Facebook</span></a></li>
-								<li><a href="https://www.youtube.com/channel/UCTn82omUSsgufkTLmqH3wOQ" class="icon brands fa-youtube-square"><span class="label">YouTube</span></a></li>
-								<li><a href="https://littydebungus.bandcamp.com/album/live-at-misco-9-14-24" class="icon brands fa-bandcamp"><span class="label">BandCamp</span></a></li>
+        <p class="booking-blurb">For booking inquiries email <a href="mailto:Booking@LittyD.com">Booking@LittyD.com</a></p>
 
-							</ul>
-						</nav>
+        <nav>
+          <ul>
+            <li><a href="https://open.spotify.com/artist/1wzkm8uYH2UiFbdSSP0gIz?si=rSxMXra6RtSMRiDYsQe52A" class="icon brands fa-spotify"><span class="label">Spotify</span></a></li>
+            <li><a href="https://music.youtube.com/channel/UCyQRqttn6OlrTbFi0AKCs3g?si=rKUJft7sG61y6W-c" class="icon brands fa-youtube"><span class="label">YouTube Music</span></a></li>
+            <li><a href="https://www.instagram.com/littydebungus" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+            <li><a href="https://www.facebook.com/littydebungus" class="icon brands fa-facebook-square"><span class="label">Facebook</span></a></li>
+            <li><a href="https://www.youtube.com/channel/UCTn82omUSsgufkTLmqH3wOQ" class="icon brands fa-youtube-square"><span class="label">YouTube</span></a></li>
+            <li><a href="https://littydebungus.bandcamp.com/album/live-at-misco-9-14-24" class="icon brands fa-bandcamp"><span class="label">BandCamp</span></a></li>
+          </ul>
+        </nav>
 
+        <marquee id="easter" behavior="scroll" direction="left"></marquee>
+        <script>
+          var myArray = [
+            "The prescription's the same",
+            "Coming to a galaxy near you",
+            "Music as it ought to be",
+            "Drivin' on the bay bridge",
+          ];
+          document.getElementById('easter').innerHTML = myArray[Math.floor(Math.random() * myArray.length)];
+        </script>
 
-						<br />
-						<br />
-						<br />
-						<br />
+        <!-- SnapWidget -->
+        <script src="https://snapwidget.com/js/snapwidget.js"></script>
+        <iframe src="https://snapwidget.com/embed/1117760" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:100%;" title="Recent Insta Posts"></iframe>
 
-						<p style = "font-size: 500%; line-height: 1em; color: Purple; text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white; font-weight: 900;"> Tour Dates</p>
-						<br />
-						<br />
-						<p style = "font-size: 300%; line-height: 1em; color: White; text-shadow: -5px 0 purple, 0 10px purple, 5px 0 purple, 0 -5px purple; font-weight: 900; text-align: center"> <a href="https://outerbass.space/">Sat June 20th - Outer Bass Fest, Ben Lomond</a> </p>
-						<br />
-						<br />
-						<br />
-						<br />
+      </div>
 
+      <footer id="footer">
+        <span class="copyright">&copy; Litty deBungus</span>
+      </footer>
+    </div>
 
-						<p style = "font-size: 200%; line-height: 1em; color: Black; text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white; font-weight: 900;"> For booking inquiries email Booking@LittyD.com</p>
+  </div>
 
-						<br />
-						<br />
-						<br />
-						<br />
-
-
-						<nav>
-							<ul>
-								<li><a href="https://open.spotify.com/artist/1wzkm8uYH2UiFbdSSP0gIz?si=rSxMXra6RtSMRiDYsQe52A" class="icon brands fa-spotify"><span class="label">Spotify</span></a></li>
-								<li><a href="https://www.instagram.com/littydebungus" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-								<li><a href="https://www.facebook.com/littydebungus" class="icon brands fa-facebook-square"><span class="label">Facebook</span></a></li>
-								<li><a href="https://www.youtube.com/channel/UCTn82omUSsgufkTLmqH3wOQ" class="icon brands fa-youtube-square"><span class="label">YouTube</span></a></li>
-								<li><a href="https://littydebungus.bandcamp.com/album/live-at-misco-9-14-24" class="icon brands fa-bandcamp"><span class="label">BandCamp</span></a></li>
-							</ul>
-						</nav>
-
-						<marquee id='easter' behavior="scroll" direction="left"></marquee>
-						<script>
-						var myArray = [
-							"The prescription's the same",
-							"Coming to a galaxy near you",
-							"Music as it ought to be",
-							"Drivin’ on the bay bridge",
-						]
-						// var rand = myArray[Math.floor(Math.random() * myArray.length)];
-						var rand =  myArray[Math.floor(Math.random() * myArray.length)];
-						var easter = document.getElementById('easter')
-						easter.innerHTML = rand
-						</script>
-
-						<!-- SnapWidget -->
-						<script src="https://snapwidget.com/js/snapwidget.js"></script>
-						<iframe src="https://snapwidget.com/embed/1117760" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden;  width:100%; " title="Recent Insta Posts"></iframe>
-					</div>
-
-
-
-				<!-- Footer -->
-					<footer id="footer">
-						<span class="copyright">&copy; Litty deBungus</span>
-					</footer>
-
-			</div>
-		</div>
-		<script>
-			window.onload = function() { document.body.classList.remove('is-preload'); }
-			window.ontouchmove = function() { return false; }
-			window.onorientationchange = function() { document.body.scrollTop = 0; }
-		</script>
-	</body>
+  <script src="assets/js/dynamic-bg.js"></script>
+  <script src="assets/js/waves-bg.js"></script>
+  <script src="assets/js/glow-proximity.js"></script>
+  <script>
+    window.onload = function () { document.body.classList.remove('is-preload'); }
+    window.ontouchmove = function () { return false; }
+    window.onorientationchange = function () { document.body.scrollTop = 0; }
+  </script>
+</body>
 </html>
