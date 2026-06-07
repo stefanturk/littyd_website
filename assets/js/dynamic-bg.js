@@ -2,7 +2,7 @@
   var bg = document.getElementById('bg');
   if (!bg) return;
 
-  var files = ['image1.jpg', 'image3.jpg', 'image4.jpg', 'image5.jpg', 'image13.jpg', 'image18.jpg'];
+  var files = ['image1.jpg', 'image3.jpg', 'image4.jpg', 'image13.jpg', 'image18.jpg'];
 
   // Fisher-Yates shuffle, pick 4
   for (var i = files.length - 1; i > 0; i--) {
@@ -52,6 +52,7 @@
       '  100% { transform: translate3d(-' + scrollAmount + 'px,0,0); }' +
       '}';
     document.head.appendChild(styleEl);
-    bg.style.animation = 'bg-dynamic 60s linear infinite alternate';
+    var isMobile = window.matchMedia('(hover: none)').matches;
+    bg.style.animation = 'bg-dynamic ' + (isMobile ? '120' : '60') + 's linear infinite alternate';
   }
 })();

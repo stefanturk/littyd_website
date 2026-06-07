@@ -146,6 +146,7 @@
 
   function mobileUpdate() {
     if (!initialized) return;
+    refreshRects(); // re-read positions after scroll settles
     var vh = window.innerHeight;
     var fadeRange = vh * 0.25;
     for (var i = 0; i < allTargets.length; i++) {
@@ -169,17 +170,18 @@
       requestAnimationFrame(desktopUpdate);
     });
   } else {
-    var scrollPending = false;
+    // Throttle mobile glow updates to ~10fps — prevents layout thrash during momentum scroll
+    var mobileTimer = null;
     window.addEventListener('scroll', function() {
-      scheduleRectRefresh();
-      if (!scrollPending && initialized) {
-        scrollPending = true;
-        requestAnimationFrame(function() { scrollPending = false; mobileUpdate(); });
+      if (!mobileTimer) {
+        mobileTimer = setTimeout(function() {
+          mobileTimer = null;
+          mobileUpdate();
+        }, 100);
       }
     }, { passive: true });
   }
 
-  window.addEventListener('scroll', scheduleRectRefresh, { passive: true });
   window.addEventListener('resize', scheduleRectRefresh, { passive: true });
 
   if (document.readyState === 'loading') {

@@ -36,6 +36,37 @@
     my = (e.clientY - NAV_H) * dpr;
   });
 
+  // Touch: spawn ripples on tap and drag, treating each touch point like a mouse
+  var lastTouchX = -1, lastTouchY = -1;
+
+  function spawnTouchRipple(clientX, clientY, strength) {
+    var tx = clientX * dpr;
+    var ty = (clientY - NAV_H) * dpr;
+    var scrollPx = scrollY * dpr;
+    ripples.push({ x: tx, viewY: ty, docY: ty + scrollPx, age: 0, strength: strength });
+    if (ripples.length > 18) ripples.shift();
+  }
+
+  document.addEventListener('touchstart', function (e) {
+    var touch = e.touches[0];
+    lastTouchX = touch.clientX;
+    lastTouchY = touch.clientY;
+    spawnTouchRipple(touch.clientX, touch.clientY, 0.55);
+  }, { passive: true });
+
+  document.addEventListener('touchmove', function (e) {
+    var touch = e.touches[0];
+    var dx = touch.clientX - lastTouchX;
+    var dy = touch.clientY - lastTouchY;
+    var dist = Math.sqrt(dx * dx + dy * dy);
+    if (dist > 4) {
+      var strength = Math.min(1, dist / 40);
+      spawnTouchRipple(touch.clientX, touch.clientY, strength);
+      lastTouchX = touch.clientX;
+      lastTouchY = touch.clientY;
+    }
+  }, { passive: true });
+
   // Pre-build enough waves for the tallest possible page; active count computed per-frame
   const waves = Array.from({ length: 80 }, function (_, i) {
     var j = i % 9;
