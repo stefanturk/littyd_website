@@ -2,7 +2,7 @@
 """update_tour.py — manage Litty D tour dates in index.html.
 
 A tiny interactive menu that does the only three things done when shows change:
-  1) remove shows that are in the past
+  1) remove shows (past ones automatically, or pick future ones if none are past)
   2) add a new show (prompts for details, updates index.html)
   3) git commit & push
 
@@ -163,23 +163,48 @@ def print_shows(shows):
         print(f"  {i}. {s.label()}")
 
 
-def remove_past(log):
+def remove_shows(log):
     shows = load_shows()
     today = date.today()
     past = [s for s in shows if s.d and s.d < today]
-    if not past:
-        print("\nNo past shows to remove.")
+    if past:
+        print("\nThese shows are in the past:")
+        for s in past:
+            print(f"  - {s.label()}")
+        if not confirm(f"Remove {len(past)} past show(s)?"):
+            print("Cancelled.")
+            return
+        keep = [s for s in shows if not (s.d and s.d < today)]
+        write_shows(keep)
+        log.append(f"Remove {len(past)} past show{'s' if len(past) != 1 else ''}")
+        print(f"Removed {len(past)} show(s).")
         return
-    print("\nThese shows are in the past:")
-    for s in past:
-        print(f"  - {s.label()}")
-    if not confirm(f"Remove {len(past)} past show(s)?"):
+
+    print("\nNo past shows. Which show(s) do you want to remove?")
+    if not shows:
+        print("  (none)")
+        return
+    print_shows(shows)
+    raw = ask("  Show number(s), comma-separated (blank to cancel): ")
+    if not raw:
         print("Cancelled.")
         return
-    keep = [s for s in shows if not (s.d and s.d < today)]
+    nums = [n.strip() for n in raw.split(",") if n.strip()]
+    if not all(n.isdigit() and 1 <= int(n) <= len(shows) for n in nums):
+        print("Cancelled — invalid selection.")
+        return
+    idxs = {int(n) - 1 for n in nums}
+    to_remove = [shows[i] for i in sorted(idxs)]
+    print("\nRemoving:")
+    for s in to_remove:
+        print(f"  - {s.label()}")
+    if not confirm(f"Remove {len(to_remove)} show(s)?"):
+        print("Cancelled.")
+        return
+    keep = [s for i, s in enumerate(shows) if i not in idxs]
     write_shows(keep)
-    log.append(f"Remove {len(past)} past show{'s' if len(past) != 1 else ''}")
-    print(f"Removed {len(past)} show(s).")
+    log.append(f"Remove {len(to_remove)} show{'s' if len(to_remove) != 1 else ''}")
+    print(f"Removed {len(to_remove)} show(s).")
 
 
 def add_show(log):
@@ -264,6 +289,7 @@ def commit_push(log):
     steps = [
         ["git", "add", "index.html"],
         ["git", "commit", "-m", msg],
+        ["git", "pull", "--rebase", "--autostash", "-q"],  # daily Action may have pushed
         ["git", "push"],
     ]
     for cmd in steps:
@@ -339,15 +365,46 @@ def git_has_changes():
 # --- main loop -------------------------------------------------------------
 
 
+def prune_past():
+    """Non-interactive: drop shows dated before today. Used by the daily GitHub Action.
+
+    Show day itself stays listed; it's removed the next morning. Only writes
+    index.html when something changed, so the Action can tell if there's a commit.
+    """
+    shows = load_shows()
+    today = date.today()
+    past = [s for s in shows if s.d and s.d < today]
+    if not past:
+        print("No past shows.")
+        return
+    write_shows([s for s in shows if s not in past])
+    for s in past:
+        print(f"Removed: {s.label()}")
+
+
+def pull_latest():
+    """The daily Action pushes to GitHub too, so start from the latest copy."""
+    r = subprocess.run(["git", "pull", "--ff-only", "-q"], cwd=INDEX.parent,
+                       capture_output=True, text=True)
+    if r.returncode != 0:
+        print("Heads up: couldn't pull the latest site from GitHub:\n"
+              + (r.stdout + r.stderr).strip())
+
+
 def main():
     if not INDEX.exists():
         raise SystemExit(f"index.html not found at {INDEX}")
 
+    if "--prune-past" in sys.argv[1:]:
+        prune_past()
+        return
+
+    pull_latest()
     log = []  # human-readable descriptions of changes made this session
     while True:
         print_shows(load_shows())
         print(
-            "\n  [1] Remove past shows"
+            "\n  [1] Remove shows"
             "\n  [2] Add a show"
             "\n  [3] Update a show"
             "\n  [4] Commit & push"
@@ -355,7 +412,7 @@ def main():
         )
         choice = ask("Choose: ")
         if choice == "1":
-            remove_past(log)
+            remove_shows(log)
         elif choice == "2":
             add_show(log)
         elif choice == "3":
